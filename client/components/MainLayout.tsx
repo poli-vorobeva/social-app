@@ -6,6 +6,7 @@ import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import Diversity1OutlinedIcon from "@mui/icons-material/Diversity1Outlined";
 import DynamicFeedOutlinedIcon from "@mui/icons-material/DynamicFeedOutlined";
 import ForumOutlinedIcon from "@mui/icons-material/ForumOutlined";
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 
 
 type navItemType = {
@@ -25,6 +26,11 @@ const navItems: navItemType[] = [
 		href: '/friends'
 	},
 	{
+		text:'Люди',
+		icon:<EmojiPeopleIcon/>,
+		href:'/people'
+	},
+	{
 		text: 'Лента',
 		icon: <DynamicFeedOutlinedIcon/>,
 		href: '/feed'
@@ -39,17 +45,19 @@ const MainLayout:React.FC = ({children}:{children:ReactElement}) => {
 	const router = useRouter()
 	return (
 		<div>
-			{children}
 			<BottomNavigation
+				sx={{position: 'sticky',top: '0'}}
 				showLabels
 			>
 				{
 					navItems.map(navItem => {
-							return <BottomNavigationAction label={navItem.text} icon={navItem.icon}
+							return <BottomNavigationAction key={navItem.text} label={navItem.text} icon={navItem.icon}
 																						 onClick={() => router.push(navItem.href)}/>
 						}
 					)}
 			</BottomNavigation>
+			{children}
+
 		</div>
 	);
 };

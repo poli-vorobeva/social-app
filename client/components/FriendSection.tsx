@@ -6,6 +6,7 @@ import {AppState} from "../store/store";
 
 const FriendSection = () => {
 	const user=useSelector((state:AppState) => state.user)
+	console.log(user.avatar,'$%')
 	return (
 		<>
 			<Typography variant={'h6'}>Друзья</Typography>

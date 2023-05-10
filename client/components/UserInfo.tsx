@@ -3,13 +3,17 @@ import {Avatar} from "@mui/material";
 import Grid from "@mui/material/Grid";
 import UserContent from "./UserContent";
 import InfoSection from "./InfoSection";
+import {useSelector} from "react-redux";
+import App from "next/app";
+import {AppState} from "../store/store";
 const UserInfo = () => {
+	const avatar=useSelector((state:AppState) => state.user.avatar)
 	return (
 		<Grid container spacing={2}>
 			<Grid item xs={2}>
 				<Avatar
 					alt="User Name"
-					//	src="/static/images/avatar/1.jpg"
+					src={'http://localhost:5000/'+avatar}
 					sx={{
 						width: 56, height: 56, display: 'flex',
 						justifyContent: 'center',
